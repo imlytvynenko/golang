@@ -1,8 +1,10 @@
 package main
 
 func main() {
-	cards := deck{"Ace of Diamonds", "Five of Diamonds"}
-	cards = append(cards, "Six of Spades")
+	cards := newDeck()
 
-	cards.print()
+	// Assign multiple values from method that returns 2 values
+	hand, ramainingDeck := deal(cards, 5)
+	hand.print()
+	ramainingDeck.print()
 }
