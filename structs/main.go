@@ -25,13 +25,19 @@ func main() {
 
 	jim.print()
 
-	jim.updateName("Jimmy")
-	// Name is not updated here
+	// & - give us the memory address of the value this variable is pointing at
+	jimPointer := &jim
+	jimPointer.updateName("Jimmy")
+	// New name is going to be displayed
 	jim.print()
 }
 
-func (p person) updateName(newName string) {
-	p.firstName = newName
+// *person - this is a type description - it means we're worikng
+// with a pointer to a person
+// * - is not operator here, it's a description of type
+func (pointerToPerson *person) updateName(newName string) {
+	// * - give us the value this memory address is pointing at
+	(*pointerToPerson).firstName = newName
 }
 
 func (p person) print() {
