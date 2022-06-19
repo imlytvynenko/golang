@@ -30,6 +30,21 @@ func main() {
 	jimPointer.updateName("Jimmy")
 	// New name is going to be displayed
 	jim.print()
+
+	// New example that works differently with structs
+	mySlice := []string{"Hi", "There", "How", "Are", "You"}
+	updateSlice(mySlice)
+	// Here we could see that the first element of slice was changed
+	// It happens because slice is a reference type
+	// Under the hood when we create a new slice, we create array and a special object
+	// this special object has a pointer to the original array and other fields
+	// In reality updateSlice passes special object that refers to orignal array.
+	// That is why here we could see updated array
+	fmt.Println(mySlice)
+}
+
+func updateSlice(s []string) {
+	s[0] = "Bye"
 }
 
 // *person - this is a type description - it means we're worikng
