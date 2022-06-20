@@ -5,31 +5,29 @@ import "fmt"
 // Here I'm going to show the simplest problem, why we need interfaces
 // This example is contrived
 
+type bot interface {
+	getGreeting() string
+}
+
 type englishBot struct{}
 type spanishBot struct{}
 
 func main() {
 	eb := englishBot{}
+	sb := spanishBot{}
+
 	printGreeting(eb)
+	printGreeting(sb)
 }
 
-// Go does not support function overloading
-// Also, printGreeting in both cases practically identicall,
-// And generally it does not matter which bot is going to passed into func
-// There are a lot of different languages 
-// and it's not good write new print func for each bot
-func printGreeting(eb englishBot) {
-	fmt.Println(eb.getGreeting())
+func printGreeting(b bot) {
+	fmt.Println(b.getGreeting())
 }
-
-// func printGreeting(sb spanishBot) {
-// 	fmt.Println(sb.getGreeting())
-// }
 
 func (englishBot) getGreeting() string {
 	return "Hi there!"
 }
 
 func (spanishBot) getGreeting() string {
-	return "Hi there!"
+	return "Hola"
 }
