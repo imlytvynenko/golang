@@ -18,7 +18,6 @@ type triangle struct{
 func main() {
 	sq := square{sideLenght: 5.05}
 	tr := triangle{base: 3.78, height: 4.05}
-	
 	pritnArea(sq)
 	pritnArea(tr)
 }
